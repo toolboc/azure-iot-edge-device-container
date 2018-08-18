@@ -1,0 +1,70 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: {{ template "azure-iot-edge-device-container.fullname" . }}
+  labels:
+    app: {{ template "azure-iot-edge-device-container.name" . }}
+    chart: {{ template "azure-iot-edge-device-container.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ template "azure-iot-edge-device-container.name" . }}
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "azure-iot-edge-device-container.name" . }}
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: docker
+              containerPort: 2375
+              protocol: TCP
+            - name: management
+              containerPort: 15580
+              protocol: TCP
+            - name: workload
+              containerPort: 15581
+              protocol: TCP
+          env:
+          - name: spAppUrl
+            value: "{{ .Values.spAppUrl }}"
+          - name: spPassword
+            value: "{{ .Values.spPassword }}"
+          - name: tenantId
+            value: "{{ .Values.tenantId }}"
+          - name: subscriptionId
+            value: "{{ .Values.subscriptionId }}"
+          - name: iothub_name
+            value: "{{ .Values.iothub_name }}"
+          - name: environment
+            value: "{{ .Values.environment }}"       
+          securityContext: 
+            privileged: true             
+          volumeMounts: 
+          - mountPath: /var/lib/docker
+            name: docker-graph-storage 
+      volumes: 
+        - name: docker-graph-storage 
+          emptyDir: {}
+          resources:
+{{ toYaml .Values.resources | indent 12 }}
+    {{- with .Values.nodeSelector }}
+      nodeSelector:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.affinity }}
+      affinity:
+{{ toYaml . | indent 8 }}
+    {{- end }}
+    {{- with .Values.tolerations }}
+      tolerations:
+{{ toYaml . | indent 8 }}
+    {{- end }}

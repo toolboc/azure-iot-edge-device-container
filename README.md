@@ -37,16 +37,24 @@ Obtain the following Parameters:
 | subscriptionId   | The azure subscription id where the IoT Hub is deployed | Required |
 | iothub_name   | The name of the Azure IoT Hub | Required |
 | environment   | A value to use for the envrionment tag in the created device's devicetwin | Optional |
-| acr_user   | User name for [Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/) or private Docker registry | Optional |
-| acr_password   | Password for the ACR or private Docker Registry | Optional |
-
 
 Start a container instance with:
 
-    docker run -it -d --privileged -e spAppUrl='<spAppUrl>' -e spPassword='<spPassword>' -e tenantId='<tenantId>' -e subscriptionId='<subscriptionId>' -e iothub_name='<iothub_name>' -e environment='<environment>' -e acr_host='<acr_host>' -e acr_user='<acr_user>' -e acr_password='<acr_password>' toolboc/azure-iot-edge-device-container
+    docker run -it -d --privileged -e spAppUrl='<spAppUrl>' -e spPassword='<spPassword>' -e tenantId='<tenantId>' -e subscriptionId='<subscriptionId>' -e iothub_name='<iothub_name>' -e environment='<environment>' toolboc/azure-iot-edge-device-container
 
 The device will automatically register itself as an Edge device within the specified IoT Hub using the hostname of the container instance.  
 
 You can use the environment tag to specify a Target Condition to apply apply an IoT Deployment definition. 
 
-![Edge Deployment Configuration](/Content/Deployment.PNG)
+![Edge Deployment Configuration](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/Deployment.PNG)
+
+# Deploy to k8s using helm:
+
+Create an [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster)
+[Install helm and install tiller](https://docs.helm.sh/using_helm/#quickstart-guide) in your cluster
+
+Navigate to the helm directory in this repo and execute the following:
+
+    helm install --name azure-iot-edge-device-container azure-iot-edge-device-container --set spAppUrl=<spAppUrl> --set spPassword=<spPassword> --set tenantId=<tenantId> --set subscriptionId=<subscriptionId> --set iothub_name=<iothub_name> --set environment=<environment> --set replicaCount=1
+
+
