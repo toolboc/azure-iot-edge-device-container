@@ -9,6 +9,7 @@ RUN apt-get update -qq && apt-get install -qqy \
     lsb-release \
     jq \
     net-tools \
+    iptables \
     iproute2 \
     systemd && \
     rm -rf /var/lib/apt/lists/*
