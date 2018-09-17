@@ -45,8 +45,14 @@ iotedged -c /etc/iotedge/config.yaml
 
 }
 
-echo "***Start Docker in Docker***"
+echo "***Starting Docker in Docker***"
 dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 &
+
+while (! docker stats --no-stream ); do
+  # Docker takes a few seconds to initialize
+  echo "Waiting for Docker to launch..."
+  sleep 1
+done
 
 if [ -z "$connectionString" ]; then
     echo "No connectionString provided, provisioning as a brand new IoTEdge device with name: $(hostname)"
