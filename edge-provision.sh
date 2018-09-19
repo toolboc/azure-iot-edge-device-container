@@ -46,6 +46,12 @@ iotedged -c /etc/iotedge/config.yaml
 }
 
 echo "***Starting Docker in Docker***"
+#remove docker.pid if it exists to allow Docker to restart if the container was previously stopped
+if [ -f /var/run/docker.pid ]; then
+    echo "Stale docker.pid found in /var/run/docker.pid, removing..."
+    rm /var/run/docker.pid
+fi
+
 dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 &
 
 while (! docker stats --no-stream ); do
