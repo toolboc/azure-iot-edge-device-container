@@ -1,9 +1,9 @@
 # azure-iot-edge-device-container
-An Azure IoT Edge Device in a Docker container
+An Azure IoT Edge Device in a Docker container with x64 / arm32 support
 
 [![Docker Build Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=toolboc&repository=azure-iot-edge-device-container)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/toolboc/azure-iot-edge-device-container.svg?style=flat-square)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/)
 
-# Quickstart
+## Create a self-provisioning Edge Device Container Instance 
 
 Create an [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal)
 
@@ -50,7 +50,17 @@ You can use the environment tag to specify a Target Condition to apply apply an 
 
 ![Edge Deployment Configuration](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/Deployment.PNG)
 
-# Deploy to k8s using helm:
+## Create an Edge Device Container Instance using an existing device connection string
+
+Obtain the device connection string:
+![Edge Device Connection String](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/ConnectionString.PNG)
+
+Start a container instance with:
+
+    docker run -it -d --privileged -e connectionString='<IoTHubDeviceConnectionString>' toolboc/azure-iot-edge-device-container
+
+
+## Deploy multiple Edge Device Container Instances to K8s using Helm:
 
 Create an [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster)
 [Install helm and install tiller](https://docs.helm.sh/using_helm/#quickstart-guide) in your cluster
@@ -58,5 +68,4 @@ Create an [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/
 Navigate to the helm directory in this repo and execute the following:
 
     helm install --name azure-iot-edge-device-container azure-iot-edge-device-container --set spAppUrl=<spAppUrl> --set spPassword=<spPassword> --set tenantId=<tenantId> --set subscriptionId=<subscriptionId> --set iothub_name=<iothub_name> --set environment=<environment> --set replicaCount=1
-
 
