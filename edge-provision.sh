@@ -15,6 +15,8 @@ echo "***Configuring and Starting IoT Edge Runtime***"
 
 IP=$(ifconfig eth0 | sed -En 's/127.0.0.1//;s/.*inet (addr:)?(([0-9]*\.){3}[0-9]*).*/\2/p')
 
+echo export IOTEDGE_HOST=http://$IP:15580 >> ~/.bashrc
+
 cat <<EOF > /etc/iotedge/config.yaml
 provisioning:
   source: "manual"
@@ -41,7 +43,7 @@ EOF
 
 cat /etc/iotedge/config.yaml
 
-iotedged -c /etc/iotedge/config.yaml
+iotedged -c /etc/iotedge/config.yaml 
 
 }
 
