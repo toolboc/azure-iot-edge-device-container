@@ -69,3 +69,57 @@ Navigate to the helm directory in this repo and execute the following:
 
     helm install --name azure-iot-edge-device-container azure-iot-edge-device-container --set spAppUrl=<spAppUrl> --set spPassword=<spPassword> --set tenantId=<tenantId> --set subscriptionId=<subscriptionId> --set iothub_name=<iothub_name> --set environment=<environment> --set replicaCount=1
 
+## Use iotedge cli within the Edge Device Container Instance
+
+You can use the iotedge cli within the docker container.
+
+For example, when running a single instance in docker, you can open an interactive shell by running:
+
+```
+docker exec -it <containerid> bash
+```
+
+Then, within that interactive shell, run the following command to list the modules on your edge device, or any other `iotedge` command you wish:
+
+```
+iotedge list
+```
+
+To exit the interactive shell, simply run the following within the interactive shell:
+
+```
+exit
+```
+
+## Use iotedge cli from the Host
+
+First you need to have the [Azure IoT Edge Runtime Installed](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux) on your host machine.  
+Find the container id for the Edge Device Container Instance by running the following command to obtain the `CONTAINER ID` value for the `azure-iot-edge-device-container`.
+
+```
+docker container list
+```
+
+Next, you need to inspect the Edge Device Container Instance using the following command on the host machine:
+
+```
+docker inspect <containerid>
+```
+
+In the output look for the `IPAddress` value:
+
+![IPAddress](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/InspectContainerIpAddress.png)
+
+Then, using that IP address you can run the following from the host machine:
+
+```
+docker exec <containerid> iotedge -H http://<IPAddress>:15580 list
+```
+
+For example, if the container id for your Edge Device Container Instance started with `0a` and the `IPAddress` value for your container was `172.17.0.2` you could run:
+
+```
+docker exec 0a iotedge -H http://172.17.0.2:15580 list
+```
+
+![iotedge list](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/IoTEdgeListResult.png)
