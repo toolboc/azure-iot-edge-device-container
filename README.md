@@ -1,5 +1,5 @@
 # azure-iot-edge-device-container
-An Azure IoT Edge Device in a Docker container with x64 / arm32 support
+An Azure IoT Edge Device in a Docker container with x64 / arm32 / aarch64 support
 
 [![Docker Build Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=toolboc&repository=azure-iot-edge-device-container)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/toolboc/azure-iot-edge-device-container.svg?style=flat-square)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/)
 
