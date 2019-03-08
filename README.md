@@ -1,7 +1,20 @@
 # azure-iot-edge-device-container
 An Azure IoT Edge Device in a Docker container with x64 / arm32 / aarch64 support
 
+* [Azure IoT Edge Documentation](https://docs.microsoft.com/en-us/azure/iot-edge?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
+* [Azure CLI IoT Extension Documentation](https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest&wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
+
 [![Docker Build Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=toolboc&repository=azure-iot-edge-device-container)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/toolboc/azure-iot-edge-device-container.svg?style=flat-square)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/)
+
+## Create an Edge Device Container Instance using an existing device connection string
+
+Obtain the device connection string:
+![Edge Device Connection String](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/ConnectionString.PNG)
+
+Start a container instance with:
+
+    docker run -it -d --privileged -e connectionString='<IoTHubDeviceConnectionString>' toolboc/azure-iot-edge-device-container
+
 
 ## Create a self-provisioning Edge Device Container Instance 
 
@@ -49,16 +62,6 @@ The device will automatically register itself as an Edge device within the speci
 You can use the environment tag to specify a Target Condition to apply apply an IoT Deployment definition. 
 
 ![Edge Deployment Configuration](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/Deployment.PNG)
-
-## Create an Edge Device Container Instance using an existing device connection string
-
-Obtain the device connection string:
-![Edge Device Connection String](https://raw.githubusercontent.com/toolboc/azure-iot-edge-device-container/master/Content/ConnectionString.PNG)
-
-Start a container instance with:
-
-    docker run -it -d --privileged -e connectionString='<IoTHubDeviceConnectionString>' toolboc/azure-iot-edge-device-container
-
 
 ## Deploy multiple Edge Device Container Instances to K8s using Helm:
 
