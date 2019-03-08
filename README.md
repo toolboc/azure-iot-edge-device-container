@@ -1,10 +1,10 @@
 # azure-iot-edge-device-container
+[![Docker Build Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=toolboc&repository=azure-iot-edge-device-container)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/toolboc/azure-iot-edge-device-container.svg?style=flat-square)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/)
+
 An Azure IoT Edge Device in a Docker container with x64 / arm32 / aarch64 support
 
 * [Azure IoT Edge Documentation](https://docs.microsoft.com/en-us/azure/iot-edge?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
 * [Azure CLI IoT Extension Documentation](https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest&wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
-
-[![Docker Build Status](https://dockerbuildbadges.quelltext.eu/status.svg?organization=toolboc&repository=azure-iot-edge-device-container)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/builds) [![Docker Pulls](https://img.shields.io/docker/pulls/toolboc/azure-iot-edge-device-container.svg?style=flat-square)](https://hub.docker.com/r/toolboc/azure-iot-edge-device-container/)
 
 ## Create an Edge Device Container Instance using an existing device connection string
 
