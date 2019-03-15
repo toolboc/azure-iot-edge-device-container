@@ -6,7 +6,7 @@ az login --service-principal -u $spAppUrl -p $spPassword --tenant $tenantId
 az account set --subscription $subscriptionId
 echo "***Configuring IoT Edge Device***"
 az iot hub device-identity create --device-id $(hostname) --hub-name $iothub_name --edge-enabled
-connectionString=$(az iot hub device-identity show-connection-string --device-id $(hostname) --hub-name $iothub_name | jq -r '.cs')
+connectionString=$(az iot hub device-identity show-connection-string --device-id $(hostname) --hub-name $iothub_name | jq -r '.connectionString')
 az iot hub device-twin update --device-id $(hostname) --hub-name $iothub_name --set tags='{"environment":"'$environment'"}'
 }
 
