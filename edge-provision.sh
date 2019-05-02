@@ -54,10 +54,9 @@ if [ -f /var/run/docker.pid ]; then
     rm /var/run/docker.pid
 fi
 
-dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 &
-
 while (! docker stats --no-stream ); do
   # Docker takes a few seconds to initialize
+  dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 &
   echo "Waiting for Docker to launch..."
   sleep 1
 done
