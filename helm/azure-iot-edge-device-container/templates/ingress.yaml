@@ -1,7 +1,7 @@
 {{- if .Values.ingress.enabled -}}
 {{- $fullName := include "azure-iot-edge-device-container.fullname" . -}}
 {{- $ingressPath := .Values.ingress.path -}}
-apiVersion: extensions/v1
+apiVersion: apps/v1
 kind: Ingress
 metadata:
   name: {{ $fullName }}
