@@ -3,11 +3,20 @@ entries:
   azure-iot-edge-device-container:
   - apiVersion: v1
     appVersion: "1.0"
-    created: 2018-09-05T10:25:38.4564283-05:00
+    created: "2020-09-11T19:29:39.9971673-05:00"
     description: A Helm chart for Kubernetes
-    digest: 2cbcdd7b6559fde750c0701894d3bf421e60e41c6a786a63bc2cf57e839ff729
+    digest: 87c72a176416f119e6815b5a376393398349ae40f7e166baad4de6040627845a
     name: azure-iot-edge-device-container
     urls:
-    - azure-iot-edge-device-container-0.1.0.tgz
+    - https://toolboc.github.io/azure-iot-edge-device-container/azure-iot-edge-device-container-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: "2020-09-11T19:29:39.9909839-05:00"
+    description: A Helm chart for Kubernetes
+    digest: 1f0cc3996300b7edcdcdd09e5e184e3e28a4bb18c5de5cd188faf381005e7e95
+    name: azure-iot-edge-device-container
+    urls:
+    - https://toolboc.github.io/azure-iot-edge-device-container/azure-iot-edge-device-container-0.1.0.tgz
     version: 0.1.0
-generated: 2018-09-05T10:25:38.455403-05:00
+generated: "2020-09-11T19:29:39.986585-05:00"
