@@ -3,8 +3,8 @@
 
 An Azure IoT Edge Device in a Docker container with x64 / arm32 / aarch64 support
 
-* [Azure IoT Edge Documentation](https://docs.microsoft.com/en-us/azure/iot-edge?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
-* [Azure CLI IoT Extension Documentation](https://docs.microsoft.com/en-us/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest&wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
+* [Azure IoT Edge Documentation](https://docs.microsoft.com/azure/iot-edge?WT.mc_id=iot-0000-pdecarlo)
+* [Azure CLI IoT Extension Documentation](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest&WT.mc_id=iot-0000-pdecarlo)
 
 ## Create an Edge Device Container Instance using an existing device connection string
 
@@ -18,9 +18,9 @@ Start a container instance with:
 
 ## Create a self-provisioning Edge Device Container Instance 
 
-Create an [Azure IoT Hub](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-create-through-portal?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
+Create an [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-create-through-portal?WT.mc_id=iot-0000-pdecarlo)
 
-Install the [Azure-Cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest&?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo) 
+Install the [Azure-Cli](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&%3Fwt.mc_id=azureiotedgedevicecontainer-github-pdecarlo&WT.mc_id=iot-0000-pdecarlo) 
 
 Run `az login` to sign in with the azure cli and set the appropriate subscription with:
 
@@ -65,7 +65,7 @@ You can use the environment tag to specify a Target Condition to apply apply an 
 
 ## Deploy multiple Edge Device Container Instances to K8s using Helm:
 
-Create an [Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-deploy-cluster?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo)
+Create an [Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-deploy-cluster?WT.mc_id=iot-0000-pdecarlo)
 
 [Install helm and install tiller](https://docs.helm.sh/using_helm/#quickstart-guide) in your cluster
 
@@ -97,7 +97,7 @@ exit
 
 ## Use iotedge cli from the Host
 
-First you need to have the [Azure IoT Edge Runtime Installed](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-install-iot-edge-linux?wt.mc_id=azureiotedgedevicecontainer-github-pdecarlo) on your host machine.  
+First you need to have the [Azure IoT Edge Runtime Installed](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux?WT.mc_id=iot-0000-pdecarlo) on your host machine.  
 Find the container id for the Edge Device Container Instance by running the following command to obtain the `CONTAINER ID` value for the `azure-iot-edge-device-container`.
 
 ```
