@@ -28,7 +28,7 @@ Run `az login` to sign in with the azure cli and set the appropriate subscriptio
 
 Create a Service Principal for your subscription with the azure cli:
 
-    az ad sp create-for-rbac --name <name> --password <password>
+    az ad sp create-for-rbac --name <name>
 
 You should see output similar to:
 
