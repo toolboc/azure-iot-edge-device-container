@@ -26,7 +26,7 @@ agent:
   type: "docker"
   env: {}
   config:
-    image: "mcr.microsoft.com/azureiotedge-agent:1.0"
+    image: "mcr.microsoft.com/azureiotedge-agent:1.1"
     auth: {}
 hostname: $(cat /proc/sys/kernel/hostname)
 connect:
@@ -43,7 +43,7 @@ EOF
 
 cat /etc/iotedge/config.yaml
 
-iotedged -c /etc/iotedge/config.yaml 
+iotedged -c /etc/iotedge/config.yaml
 
 }
 
@@ -64,5 +64,5 @@ done
 if [ -z "$connectionString" ]; then
     echo "No connectionString provided, provisioning as a brand new IoTEdge device with name: $(hostname)"
     provision
-fi 
+fi
 startEdgeRuntime
