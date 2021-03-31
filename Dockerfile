@@ -19,19 +19,19 @@ RUN AZ_REPO=$(lsb_release -cs) && \
     tee /etc/apt/sources.list.d/azure-cli.list && \
     curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 
-RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > ./microsoft-prod.list && \
+RUN curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list && \
     cp ./microsoft-prod.list /etc/apt/sources.list.d/ && \
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
-    cp ./microsoft.gpg /etc/apt/trusted.gpg.d/ 
+    cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     azure-cli \
     moby-cli \
-    moby-engine && \ 
-    apt-get install -y --no-install-recommends iotedge=1.0.0-1 && \ 
+    moby-engine && \
+    apt-get install -y --no-install-recommends iotedge=1.1.1-1 && \
     rm -rf /var/lib/apt/lists/*
-    
-RUN az extension add --name azure-cli-iot-ext
+
+RUN az extension add --name azure-iot
 
 COPY edge-provision.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/edge-provision.sh
